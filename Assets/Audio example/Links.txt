@@ -1,0 +1,15 @@
+Unity doc
+https://docs.unity3d.com/Manual/index.html
+https://docs.unity3d.com/ScriptReference/AudioSource.html
+
+Website
+https://freesound.org/
+
+Music loop
+https://freesound.org/people/zagi2/sounds/256851/
+
+Drop
+https://freesound.org/people/InspectorJ/sounds/360662/
+
+Jew's harp
+https://freesound.org/people/InspectorJ/sounds/411494/
