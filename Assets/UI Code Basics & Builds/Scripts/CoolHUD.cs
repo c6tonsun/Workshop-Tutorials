@@ -36,7 +36,7 @@ public class CoolHUD : MonoBehaviour
         clicks = 0;
     }
 
-    private void Update()
+    private void LateUpdate() // Running in LateUpdate so UI always updates after all other scripts
     {
         // Counting how many times Fire1 has been pressed
         if (Input.GetButtonDown(buttonName: clickButton))
