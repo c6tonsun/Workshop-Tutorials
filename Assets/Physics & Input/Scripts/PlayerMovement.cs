@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Objects rigidbody component
     private Rigidbody rb;
 
     [SerializeField]
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get the rigidbody component from the gameObject and assign it to the rb variable
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UserInput()
     {
-        // did user start pressing SPACE
+        // Has the user pressed down the space key
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -35,32 +37,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        // saving user input
+        // Forces on the x and y axis's taken from the Unity input class
+        // Both are a value between -1 and 1
         float xForce = Input.GetAxis("Horizontal");
         float zForce = Input.GetAxis("Vertical");
 
-        // making vector using input to move on the floor
+        // Creating a Vector3 with the force values
         Vector3 forceVector = new Vector3(xForce * speed, 0, zForce * speed);
 
-        // tells physics engine to move player by giving it force boost
+        // Adding force to the objects Rigidbody equal to the forceVector
         rb.AddForce(forceVector);
     }
 
     private void Jump()
     {
-        // making vector using hardcoded value
+        // Vector with a value of 200 on the y axis
         Vector3 jumpVector = new Vector3(0, 200, 0);
 
-        // tells physics engine to add force to up direction
+        // Adds force to the rigidbody equal to the jumpVector
         rb.AddForce(jumpVector);
     }
 
+    // OnTriggerEnter is called when the object collides with a trigger collider
     private void OnTriggerEnter(Collider other)
     {
+        // Does the collided objects tag equal "Pickup"
         if (other.tag == "Pickup")
         {
             score++;
             Debug.Log("Score: " + score);
+            
+            // Destroy the other object
             Destroy(other.gameObject);
         }
     }
